@@ -54,12 +54,19 @@ function orderByYear(movies) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory(movies, genre) {
-  if(genre) return moviesAverageOfDirector(movies, false, genre);
+function moviesAverageByCategory(movies, genre = false) {
+  return moviesAverageOfDirector(movies, false, genre);
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(movies) {
+
+  return movies.map(movie => {
+    var temp = Object.assign({}, movie);
+    let [hours, minutes] = temp.duration.split(' ')
+    temp.duration = (parseFloat(hours ? hours : 0 ) * 60) + parseFloat(minutes ?  minutes : 0);
+    return temp;
+  });
 
 }
 
