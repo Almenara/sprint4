@@ -9,9 +9,18 @@ function getMoviesFromDirector(movies, director) {
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(movies, director) {
-  let directorsMovies = getMoviesFromDirector(movies, director)
-  let score = directorsMovies.reduce((totalScore, movie) => totalScore += movie.score , 0) / directorsMovies.length; 
+function moviesAverageOfDirector(movies, director = false, genre = false) {
+  
+  let selectedMovies = movies;
+  
+  if(director){ 
+    selectedMovies = getMoviesFromDirector(selectedMovies, director); 
+  }
+  if(genre){ 
+    selectedMovies = selectedMovies.filter(movie => movie.genre.includes(genre));
+  }
+
+  let score = selectedMovies.reduce((totalScore, movie) => totalScore += movie.score , 0) / selectedMovies.filter(movie => movie.score !== '' ).length; 
   return parseFloat(score.toFixed(2));
 }
 
@@ -45,8 +54,8 @@ function orderByYear(movies) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverageByCategory(movies, genre) {
+  if(genre) return moviesAverageOfDirector(movies, false, genre);
 }
 
 // Exercise 7: Modify the duration of movies to minutes

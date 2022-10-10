@@ -2,7 +2,15 @@
 <script src="data.js"></script>
 <script src="films.js"></script>
 <script>
-    console.log( orderByYear([{ year: 2002 }, { year: 1982 }, { year: 1995 }]) )
+    console.log( moviesAverageByCategory([
+      { score: 5,
+        genre: ['Action'], 
+      },
+      { score: '',
+        genre: ['Action'], 
+      }
+    ],
+    'Action') )
 </script>
 <html>
 
